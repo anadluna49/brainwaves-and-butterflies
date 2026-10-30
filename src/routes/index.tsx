@@ -203,7 +203,8 @@ function CircuitTest() {
   const [step, setStep] = useState(0);
   const [score, setScore] = useState(0);
   const done = step >= questions.length;
-  const result = results[score <= 2 ? 0 : score <= 4 ? 1 : 2];
+  const result = results[score <= 2 ? 0 : score <= 4 ? 1 : 2]!;
+  const current = questions[Math.min(step, questions.length - 1)]!;
 
   return (
     <Section id="test" kicker="Autoevaluación" title="Evaluador de circuitos neuronales" sub="3 preguntas rápidas para conocer tus hábitos de enfoque.">
@@ -216,9 +217,9 @@ function CircuitTest() {
         {!done ? (
           <div key={step} className="animate-in fade-in slide-in-from-right-4 duration-500">
             <p className="mb-1 text-xs uppercase tracking-widest opacity-60">Pregunta {step + 1} de 3</p>
-            <h3 className="mb-6 text-2xl font-semibold">{questions[step].q}</h3>
+            <h3 className="mb-6 text-2xl font-semibold">{current.q}</h3>
             <div className="grid gap-3">
-              {questions[step].opts.map((o, i) => (
+              {current.opts.map((o, i) => (
                 <button
                   key={o}
                   onClick={() => { setScore((s) => s + i); setStep((s) => s + 1); }}
