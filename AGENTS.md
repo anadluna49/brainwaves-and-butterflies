@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep interactive educational tools in browser-safe components and self-report scoring in a pure tested module; this separates scientific copy, graphics, and transparent non-diagnostic calculations.
+- Define all visual colors and effects in global semantic CSS tokens; the same palette must support both themes.
