@@ -29,7 +29,6 @@
 }
 :root {
   --radius: .5rem;
-  --ink: oklch(0.194 0.024 302);
   --plum: #4A3F4B;
   --mauve: #806C79;
   --rose: #C1A0AC;

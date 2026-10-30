@@ -51,6 +51,7 @@ export function CoherenceDials() {
   const [reported, setReported] = useState(false);
   const score = coherenceScore(habits);
   const tip = dialData.find((dial) => dial.key === lowestHabit(habits)) ?? dialData[0];
+  if (!tip) return null;
   return (
     <section id="test" className="lab-section scroll-mt-24">
       <div className="section-heading"><div><p className="eyebrow">03 / Autoobservación</p><h2>De la intención a la acción</h2></div><p>Tres dimensiones de tus hábitos.<br />Una pausa para observarte.</p></div>
