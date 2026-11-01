@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight, Brain, Moon, Sun, Plus, Minus, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrainModel, BrainLink, regions } from "@/components/brain-model";
+import { StroopTest, BrainWaves } from "@/components/attention-labs";
 import { mapIntention, type RegionId } from "@/lib/intention-map";
 import neuralImage from "@/assets/neural-field.jpg";
 
@@ -38,7 +39,7 @@ function Index() {
   return <div className="min-h-screen">
     <header className="site-header"><nav className="page-width flex items-center justify-between gap-4 py-5" aria-label="Navegación principal">
       <a href="#inicio" className="brand flex items-center gap-3"><Brain size={25} strokeWidth={1.3} /><span>NeuroSintergia<small>LABORATORIO DE CONCIENCIA</small></span></a>
-      <div className="hidden items-center gap-7 text-xs lg:flex"><a href="#cerebro">Cerebro interactivo</a><a href="#sintergia">Energía sintérgica</a><a href="#mapeador">Mapeador</a><a href="#mitos">Mitos vs. evidencia</a></div>
+      <div className="hidden items-center gap-7 text-xs lg:flex"><a href="#cerebro">Cerebro interactivo</a><a href="#sintergia">Energía sintérgica</a><a href="#mapeador">Mapeador</a><a href="#stroop">Stroop</a><a href="#ondas">Ondas</a><a href="#mitos">Mitos vs. evidencia</a></div>
       <Button variant="ghost" size="icon" aria-label="Cambiar modo de color" title={dark ? "Modo claro" : "Modo oscuro"} onClick={() => setDark(!dark)}>{dark ? <Sun /> : <Moon />}</Button>
     </nav></header>
     <main>
@@ -50,9 +51,9 @@ function Index() {
       </section>
 
       <section id="cerebro" className="lab-section scroll-mt-24">
-        <div className="section-heading"><div><p className="eyebrow">01 / Modelo interactivo</p><h2>El cerebro del enfoque</h2></div><p>Haz clic en un punto luminoso<br />para conocer cada estructura.</p></div>
+        <div className="section-heading"><div><p className="eyebrow">01 / Modelo interactivo</p><h2>El cerebro del enfoque</h2></div><p>Gira el cerebro en 3D<br />y selecciona cada estructura.</p></div>
         <div key={flash} className={flash ? "flash-ring rounded-lg" : ""}><BrainModel active={active} onSelect={setActive} highlighted={mapped} /></div>
-        <p className="scientific-note">Diagrama simplificado y esquemático: las posiciones son aproximadas y varias estructuras (amígdala, hipocampo, hipotálamo) se encuentran en el interior del cerebro.</p>
+        <p className="scientific-note">Modelo 3D simplificado: las posiciones son aproximadas y varias estructuras (amígdala, hipocampo, hipotálamo) se encuentran en el interior del cerebro.</p>
       </section>
 
       <section id="sintergia" className="lab-section scroll-mt-24">
@@ -84,8 +85,11 @@ function Index() {
         <p className="scientific-note">Asociación educativa por palabras clave. No mide tu actividad cerebral.</p>
       </section>
 
+      <StroopTest />
+      <BrainWaves />
+
       <section id="mitos" className="lab-section scroll-mt-24">
-        <div className="section-heading"><div><p className="eyebrow">04 / Pensamiento crítico</p><h2>Mitos vs. Evidencia</h2></div><p>Haz clic en cada ficha<br />para ver los datos.</p></div>
+        <div className="section-heading"><div><p className="eyebrow">06 / Pensamiento crítico</p><h2>Mitos vs. Evidencia</h2></div><p>Haz clic en cada ficha<br />para ver los datos.</p></div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{myths.map((m) => <EvidenceCard key={m.category} {...m} />)}</div>
         <div className="references"><span className="eyebrow">Referencias</span>
           <a href="https://www.ncbi.nlm.nih.gov/books/NBK549835/" target="_blank" rel="noreferrer">SARA · NCBI <ArrowUpRight size={13} /></a>
