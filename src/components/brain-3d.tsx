@@ -36,7 +36,7 @@ export default function Brain3D({ active, highlighted, names, onSelect }: { acti
                 <sphereGeometry args={[0.14, 24, 16]} />
                 <meshStandardMaterial color={on ? C.blush : C.rose} emissive={on || lit ? C.rose : C.plum} emissiveIntensity={on ? 1.4 : lit ? 0.9 : 0.3} />
               </mesh>
-              <Html center distanceFactor={7} position={[0, 0.32, 0]} style={{ pointerEvents: "none" }}><span className={`brain3d-label ${on ? "is-active" : ""}`}>{names[id]}</span></Html>
+              <Html center distanceFactor={4} position={[0, 0.32, 0]} style={{ pointerEvents: "none" }}><span className={`brain3d-label ${on ? "is-active" : ""}`}>{names[id]}</span></Html>
             </group>
           );
         })}
