@@ -1,5 +1,7 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Html } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
+import { useEffect, useMemo } from "react";
+import * as THREE from "three";
 import type { RegionId } from "@/lib/intention-map";
 
 // Palette values (three.js needs literal colors, not CSS variables).
@@ -36,7 +38,7 @@ export default function Brain3D({ active, highlighted, names, onSelect }: { acti
                 <sphereGeometry args={[0.14, 24, 16]} />
                 <meshStandardMaterial color={on ? C.blush : C.rose} emissive={on || lit ? C.rose : C.plum} emissiveIntensity={on ? 1.4 : lit ? 0.9 : 0.3} />
               </mesh>
-              <Html center distanceFactor={4} position={[0, 0.32, 0]} style={{ pointerEvents: "none" }}><span className={`brain3d-label ${on ? "is-active" : ""}`}>{names[id]}</span></Html>
+              <Label text={names[id] ?? id} on={on} />
             </group>
           );
         })}
@@ -44,4 +46,22 @@ export default function Brain3D({ active, highlighted, names, onSelect }: { acti
       <OrbitControls enablePan={false} minDistance={3} maxDistance={7} autoRotate autoRotateSpeed={0.6} />
     </Canvas>
   );
+}
+
+// Canvas-texture sprite labels: no extra React roots (drei <Html> caused unmount races).
+function Label({ text, on }: { text: string; on: boolean }) {
+  const tex = useMemo(() => {
+    const c = document.createElement("canvas"); c.width = 512; c.height = 96;
+    const g = c.getContext("2d");
+    if (g) {
+      g.font = "500 44px Georgia, serif"; g.textAlign = "center"; g.textBaseline = "middle";
+      g.fillStyle = on ? "rgba(240,217,228,0.92)" : "rgba(22,19,31,0.75)";
+      const w = Math.min(500, g.measureText(text).width + 48);
+      g.beginPath(); g.roundRect((512 - w) / 2, 8, w, 80, 40); g.fill();
+      g.fillStyle = on ? C.plum : C.blush; g.fillText(text, 256, 50);
+    }
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  }, [text, on]);
+  useEffect(() => () => tex.dispose(), [tex]);
+  return <sprite position={[0, 0.34, 0]} scale={[1.1, 0.21, 1]} raycast={() => null}><spriteMaterial map={tex} transparent depthTest={false} /></sprite>;
 }
