@@ -2,18 +2,9 @@
 
 Landing page educativa e interactiva sobre la **neurociencia del enfoque**, la **Teoría Sintérgica de Jacobo Grinberg** y la **explicación biológica de la “ley de la atracción”**.
 
-> La idea central: tu cerebro no recibe el mundo, lo elige. La página explora, sin magia, cómo la atención, la motivación y el aprendizaje explican lo que solemos llamar “atraer” cosas.
+NeuroSintergia es un sitio de una sola página con estética de laboratorio editorial: fondo oscuro, tipografía serif elegante, bordes finos y tarjetas translúcidas. Funciona como un recorrido de arriba hacia abajo: primero se explora el cerebro, luego se entiende la teoría, después se practica con herramientas interactivas y al final se contrasta con evidencia científica.
 
-## Objetivo
-
-Proyecto académico de diseño web hecho con *Vibe Coding*. Busca:
-
-- Maquetar las secciones principales de un sitio web.
-- Aplicar estilo visual mediante prompts en lenguaje natural (modo oscuro, efecto de vidrio).
-- Perfeccionar márgenes, tipografías y diseño **responsive** para celular.
-
-El público objetivo son estudiantes curiosos por la mente, el enfoque y el aprendizaje, sin necesidad de conocimientos previos de neurociencia.
-
+Es un proyecto académico de diseño web hecho con Vibe Coding, pensado para estudiantes curiosos por la mente, el enfoque y el aprendizaje, sin necesidad de conocimientos previos de neurociencia.
 
 ## Qué se puede hacer en la página
 
