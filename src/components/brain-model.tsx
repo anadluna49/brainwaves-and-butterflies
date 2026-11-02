@@ -5,10 +5,10 @@ import type { RegionId } from "@/lib/intention-map";
 const Brain3D = lazy(() => import("./brain-3d"));
 
 class Brain3DBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
-  state = { failed: false };
+  override state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
-  componentDidCatch(error: unknown) { console.warn("Brain3D falló:", error); }
-  render() {
+  override componentDidCatch(error: unknown) { console.warn("Brain3D falló:", error); }
+  override render() {
     if (this.state.failed) return <div className="brain3d-fallback">No se pudo cargar el cerebro 3D. Puedes seguir explorando las estructuras con los botones de la tarjeta.</div>;
     return this.props.children;
   }
