@@ -52,7 +52,7 @@ function Index() {
 
       <section id="cerebro" className="lab-section scroll-mt-24">
         <div className="section-heading"><div><p className="eyebrow">01 / Modelo interactivo</p><h2>El cerebro del enfoque</h2></div><p>Gira el cerebro en 3D<br />y selecciona cada estructura.</p></div>
-        <div key={flash} className={flash ? "flash-ring rounded-lg" : ""}><BrainModel active={active} onSelect={setActive} highlighted={mapped} /></div>
+        <div className="relative"><BrainModel active={active} onSelect={setActive} highlighted={mapped} />{flash > 0 && <div key={flash} aria-hidden className="flash-ring pointer-events-none absolute inset-0 rounded-lg" />}</div>
         <p className="scientific-note">Modelo 3D simplificado: las posiciones son aproximadas y varias estructuras (amígdala, hipocampo, hipotálamo) se encuentran en el interior del cerebro.</p>
       </section>
 
